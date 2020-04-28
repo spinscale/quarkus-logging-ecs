@@ -9,14 +9,14 @@ Just add it to your quarkus project like this in maven
 <dependency>
   <groupId>de.spinscale.quarkus</groupId>
   <artifactId>quarkus-logging-ecs</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 
 or in gradle
 
 ```
-compile 'de.spinscale.quarkus:quarkus-logging-ecs:0.0.1'
+compile 'de.spinscale.quarkus:quarkus-logging-ecs:0.0.2'
 ```
 
 Once the project is included, your log message will look something like this
@@ -70,10 +70,9 @@ what I tried to do with this extension as well.
 
 | Quarkus version | quarkus-logging-ecs version |
 | --------------- | --------------------------- |
-| 1.4.1.Final     | 0.0.1                       |
+| 1.4.1.Final     | 0.0.2                       |
 
 
 ## TODO
 
 * Check if we can figure out the service name automatically
-* Check if the current profile should be logged as environment as well
