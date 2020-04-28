@@ -4,7 +4,7 @@
 
     <groupId>de.spinscale.quarkus</groupId>
     <artifactId>quarkus-logging-ecs-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>ECS Logging Extension (Elastic Common Schema) - Parent</name>
 
     <url>https://github.com/spinscale/quarkus-logging-ecs/</url>
@@ -31,7 +31,7 @@
         <connection>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</connection>
         <url>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</url>
         <developerConnection>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>quarkus-logging-ecs-parent-0.0.2</tag>
   </scm>
 
     <issueManagement>
