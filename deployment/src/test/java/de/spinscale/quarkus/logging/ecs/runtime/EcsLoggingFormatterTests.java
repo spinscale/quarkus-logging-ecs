@@ -51,6 +51,7 @@ class EcsLoggingFormatterTests {
         assertThat(root.getString("log.logger")).isEqualTo("my_logger_name");
         assertThat(root).doesNotContainKey("log.origin");
         assertThat(root.getString("service.name")).isEqualTo("my_favourite_service");
+        assertThat(root.getString("service.environment")).isEqualTo("prod");
     }
 
     @Test

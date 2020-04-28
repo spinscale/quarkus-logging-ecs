@@ -19,10 +19,13 @@ package de.spinscale.quarkus.logging.ecs.runtime;
 
 import co.elastic.logging.EcsJsonSerializer;
 import co.elastic.logging.JsonUtils;
+import io.quarkus.runtime.configuration.ProfileManager;
 import org.jboss.logmanager.ExtFormatter;
 import org.jboss.logmanager.ExtLogRecord;
 
 import java.util.Map;
+
+import static co.elastic.logging.EcsJsonSerializer.toNullSafeString;
 
 public class EcsLoggingFormatter extends ExtFormatter {
 
@@ -30,12 +33,15 @@ public class EcsLoggingFormatter extends ExtFormatter {
     private final boolean stackTraceAsArray;
     private final String serviceName;
     private final String serializedAdditionalFields;
+    private final String environment;
 
     public EcsLoggingFormatter(final EcsLoggingConfig config) {
         this.includeOrigin = config.includeOrigin;
         this.stackTraceAsArray = config.stackTraceAsArray;
+        // setting this to null prevents writing it out, when unset
         this.serviceName = "default".equals(config.serviceName) ? null : config.serviceName;
         this.serializedAdditionalFields = serializeAdditionalFields(config.additionalFields);
+        this.environment = ProfileManager.getActiveProfile();
     }
 
     @Override
@@ -46,6 +52,7 @@ public class EcsLoggingFormatter extends ExtFormatter {
         EcsJsonSerializer.serializeLogLevel(builder, record.getLevel().getName());
         EcsJsonSerializer.serializeFormattedMessage(builder, this.formatMessage(record));
         EcsJsonSerializer.serializeServiceName(builder, serviceName);
+        serializeField(builder, "service.environment", this.environment);
         EcsJsonSerializer.serializeThreadName(builder, record.getThreadName());
         EcsJsonSerializer.serializeLoggerName(builder, record.getLoggerName());
         EcsJsonSerializer.serializeMDC(builder, record.getMdcCopy());
@@ -65,6 +72,14 @@ public class EcsLoggingFormatter extends ExtFormatter {
         return builder.toString();
     }
 
+    private void serializeField(StringBuilder builder, String name, String value) {
+        builder.append('"');
+        JsonUtils.quoteAsString(name, builder);
+        builder.append("\":\"");
+        JsonUtils.quoteAsString(toNullSafeString(value), builder);
+        builder.append("\",");
+    }
+
     private String serializeAdditionalFields(Map<String, String> additionalFields) {
         if (additionalFields == null || additionalFields.isEmpty()) {
             return "";
@@ -73,11 +88,7 @@ public class EcsLoggingFormatter extends ExtFormatter {
         StringBuilder builder = new StringBuilder();
 
         for (Map.Entry<String, String> entry : additionalFields.entrySet()) {
-            builder.append('\"');
-            JsonUtils.quoteAsString(entry.getKey(), builder);
-            builder.append("\":\"");
-            JsonUtils.quoteAsString(entry.getValue(), builder);
-            builder.append("\",");
+            serializeField(builder, entry.getKey(), entry.getValue());
         }
 
         return builder.toString();
