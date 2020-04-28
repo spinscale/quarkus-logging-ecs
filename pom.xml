@@ -9,6 +9,37 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>ECS Logging Extension (Elastic Common Schema) - Parent</name>
 
+    <url>https://github.com/spinscale/quarkus-logging-ecs/</url>
+    <description>Adds ECS compatible logging to quarkus</description>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>spinscale</id>
+            <name>Alexander Reelsen</name>
+            <email>alr@spinscale.de</email>
+            <url>https://spinscale.de/</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</connection>
+        <url>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</url>
+        <developerConnection>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/spinscale/quarkus-logging-ecs/issues/</url>
+    </issueManagement>
+
     <packaging>pom</packaging>
 
     <properties>
@@ -48,4 +79,62 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
