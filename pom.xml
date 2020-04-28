@@ -148,10 +148,6 @@
                         </executions>
                         <configuration>
                             <useAgent>true</useAgent>
-                            <gpgArguments>
-                                <gpgArgument>--pinentry-mode</gpgArgument>
-                                <gpgArgument>loopback</gpgArgument>
-                            </gpgArguments>
                         </configuration>
                     </plugin>
                 </plugins>
