@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.spinscale.quarkus</groupId>
     <artifactId>quarkus-logging-ecs-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>ECS Logging Extension (Elastic Common Schema) - Parent</name>
 
     <url>https://github.com/spinscale/quarkus-logging-ecs/</url>
@@ -33,7 +31,8 @@
         <connection>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</connection>
         <url>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</url>
         <developerConnection>scm:git:git@github.com:spinscale/quarkus-logging-ecs.git</developerConnection>
-    </scm>
+      <tag>quarkus-logging-ecs-parent-0.0.1</tag>
+  </scm>
 
     <issueManagement>
         <system>GitHub</system>
