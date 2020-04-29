@@ -22,7 +22,7 @@ import io.quarkus.deployment.builditem.FeatureBuildItem;
 
 class QuarkusEcsLoggingProcessor {
 
-    private static final String FEATURE = "quarkus-logging-ecs";
+    private static final String FEATURE = "logging-ecs";
 
     @BuildStep
     FeatureBuildItem feature() {
