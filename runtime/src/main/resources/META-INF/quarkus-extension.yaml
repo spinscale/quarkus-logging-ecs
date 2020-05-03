@@ -1,12 +1,7 @@
 ---
 name: "ECS Logging for Quarkus (Elastic Common Schema)"
 metadata:
-  keywords:
-  - "logging"
-  - "json"
-  - "formatter"
-  - "ecs"
   categories:
-  - "external"
+  - "core"
   status: "preview"
   guide: "https://github.com/spinscale/quarkus-logging-ecs"
