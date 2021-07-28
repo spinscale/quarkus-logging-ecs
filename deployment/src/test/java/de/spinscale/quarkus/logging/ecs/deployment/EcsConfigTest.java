@@ -17,11 +17,11 @@
 
 package de.spinscale.quarkus.logging.ecs.deployment;
 
-import io.quarkus.runtime.logging.InitialConfigurator;
+import io.quarkus.bootstrap.logging.InitialConfigurator;
+import io.quarkus.bootstrap.logging.QuarkusDelayedHandler;
 import io.quarkus.test.QuarkusUnitTest;
 import org.jboss.logmanager.ExtFormatter;
 import org.jboss.logmanager.handlers.ConsoleHandler;
-import org.jboss.logmanager.handlers.DelayedHandler;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -45,7 +45,7 @@ public class EcsConfigTest {
         LogManager logManager = LogManager.getLogManager();
         assertThat(logManager).isInstanceOf(org.jboss.logmanager.LogManager.class);
 
-        DelayedHandler delayedHandler = InitialConfigurator.DELAYED_HANDLER;
+        QuarkusDelayedHandler delayedHandler = InitialConfigurator.DELAYED_HANDLER;
         assertThat(Logger.getLogger("").getHandlers()).contains(delayedHandler);
         assertThat(delayedHandler.getLevel()).isEqualTo(Level.ALL);
 

@@ -29,7 +29,7 @@ public class EcsLoggingConfig {
     /**
      * Determine whether to enable the JSON console ECS formatting extension, which disables "normal" console formatting.
      */
-    @ConfigItem(name = ConfigItem.PARENT, defaultValue = "true")
+    @ConfigItem(defaultValue = "true")
     boolean enable;
 
     /**

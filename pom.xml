@@ -48,7 +48,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.parameters>true</maven.compiler.parameters>
-        <quarkus.version>1.4.1.Final</quarkus.version>
+        <quarkus.version>2.0.1.Final</quarkus.version>
         <compiler-plugin.version>3.8.1</compiler-plugin.version>
     </properties>
 
@@ -60,7 +60,7 @@
         <dependencies>
             <dependency>
                 <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-bom-deployment</artifactId>
+                <artifactId>quarkus-bom</artifactId>
                 <version>${quarkus.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
