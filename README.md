@@ -1,5 +1,7 @@
 # ECS Logging for Quarkus
 
+**This is no longer maintained. Feel free to fork. Happy to link/redirect to a maintained version**
+
 This dependency provides ECS compatible logging for quarkus by just adding
 this to the list of dependencies.
 
